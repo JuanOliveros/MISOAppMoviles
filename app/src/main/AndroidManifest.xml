@@ -10,21 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vinilos">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.Vinilos.NoActionBar" />
+        <activity
             android:name=".EntranceActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="@string/title_activity_entrance"
-            android:theme="@style/Theme.Vinilos.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.Vinilos.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
