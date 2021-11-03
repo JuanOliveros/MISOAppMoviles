@@ -33,4 +33,8 @@
         <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
         <item name="fullscreenTextColor">@color/light_blue_A200</item>
     </style>
+
+    <style name="Theme.Vinilos.Album.item" parent="">
+        <item name="cardBackgroundColor">#EDFAFF</item>
+    </style>
 </resources>
