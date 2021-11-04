@@ -19,25 +19,46 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/blue_main"
         android:fitsSystemWindows="true"
+        app:itemBackground="@color/light_blue_600"
+        app:itemIconTint="@color/blue_main"
+        app:itemShapeInsetStart="10dp"
+        app:itemTextColor="@color/white"
+        android:paddingVertical="30dp"
         app:menu="@menu/activity_main_drawer">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_gravity="bottom">
+
+            <TextView
+
+                android:id="@+id/label"
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:background="#006794"
+                android:minHeight="48dp"
+                android:padding="16dp" />
 
             <TextView
                 android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_bold"
                 android:minHeight="48dp"
                 android:onClick="onLogOutClick"
+                android:padding="16dp"
                 android:text="Salir"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:itemTextColor="@color/white" />
         </LinearLayout>
+
+
+
 
     </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

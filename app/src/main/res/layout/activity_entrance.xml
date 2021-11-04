@@ -25,7 +25,7 @@
     <Button
         android:id="@+id/collector_button"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:elevation="5dp"
@@ -50,7 +50,7 @@
     <Button
         android:id="@+id/guest_button"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="256dp"
+        android:layout_width="380dp"
         android:layout_height="75dp"
         android:layout_marginTop="100dp"
         android:elevation="5dp"

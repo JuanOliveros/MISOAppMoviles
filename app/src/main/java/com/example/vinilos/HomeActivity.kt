@@ -30,6 +30,10 @@ class HomeActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarHome.toolbar)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
+
+        //Necesario para colocar a la izquierda el menú
+        //getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_home)
 
@@ -46,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_home)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
+    
     fun onLogOutClick(view: android.view.View) {
         val intent = Intent(this, EntranceActivity::class.java)
         startActivity(intent)
