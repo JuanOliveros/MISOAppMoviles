@@ -39,7 +39,7 @@ class HomeActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_artists, R.id.nav_albums, R.id.nav_collectors
+                R.id.nav_guest,R.id.nav_artists, R.id.nav_albums, R.id.nav_collectors
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -50,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_home)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-    
+
     fun onLogOutClick(view: android.view.View) {
         val intent = Intent(this, EntranceActivity::class.java)
         startActivity(intent)

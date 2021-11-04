@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_artists">
+    app:startDestination="@id/nav_guest">
+
+    <fragment
+        android:id="@+id/nav_guest"
+        android:name="com.example.vinilos.GuestFragment"
+        android:label="@string/menu_guest"
+        tools:layout="@layout/fragment_guest" />
 
     <fragment
         android:id="@+id/nav_artists"
