@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.contrib.DrawerActions;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
@@ -33,5 +34,8 @@ public class TestHU01 {
         ViewInteraction skipBtn = onView(withId(R.id.guest_button));
         skipBtn.check(matches(withText("Invitado")));
         skipBtn.perform(click());
+
+        onView(withId(R.id.drawer_layout))
+                .perform(DrawerActions.open()); // Open Drawer
     }
 }
