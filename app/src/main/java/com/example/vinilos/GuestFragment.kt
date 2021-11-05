@@ -1,5 +1,6 @@
 package com.example.vinilos
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentGuestBinding
 import com.example.vinilos.GuestViewModel
+import android.R
+import android.widget.Button
 
 
 /**
@@ -46,6 +49,12 @@ class GuestFragment : Fragment() {
         guestViewModel.content.observe(viewLifecycleOwner, Observer {
             textContentView.text = it
         })
+
+        val exit: Button = binding.exitGuestButton
+        exit.setOnClickListener(View.OnClickListener {
+            val intent = Intent(activity, EntranceActivity::class.java)
+            startActivity(intent)
+        })
         return root
     }
 
@@ -53,4 +62,6 @@ class GuestFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

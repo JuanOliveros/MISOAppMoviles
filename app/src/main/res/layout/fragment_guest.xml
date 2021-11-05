@@ -45,7 +45,7 @@
                 tools:ignore="MissingConstraints" />
 
             <Button
-                android:id="@+id/guest_button"
+                android:id="@+id/exit_guest_button"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
