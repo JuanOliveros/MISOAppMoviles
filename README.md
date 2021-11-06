@@ -4,9 +4,9 @@ Vinilos es una aplicación móvil que permite ofrecer a los melómanos, coleccio
 
 ## Iniciemos
 ### Requerimientos
+  - Android Studio | última versión 
   - JDK >= 16.0
   - Grandle >= 7
-  - Android Studio | última versión 
 
 ### Instalación
   1. `git clone` al repositorio en su máquina local.
