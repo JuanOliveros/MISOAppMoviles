@@ -30,12 +30,21 @@ public class TestHU01 {
     public ActivityTestRule<EntranceActivity> mActivityTestRule = new ActivityTestRule<>(EntranceActivity.class);
 
     @Test
-    public void mainActivityTest2() throws InterruptedException {
+    public void accessAsGuestTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.guest_button));
+        guestBtn.check(matches(withText("Invitado")));
+        guestBtn.perform(click());
+    }
+
+    @Test
+    public void guestSeesAlbumsOptionInMenuTest() throws InterruptedException {
         ViewInteraction skipBtn = onView(withId(R.id.guest_button));
         skipBtn.check(matches(withText("Invitado")));
         skipBtn.perform(click());
 
         onView(withId(R.id.drawer_layout))
                 .perform(DrawerActions.open()); // Open Drawer
+
+        onView(withText("Álbumes")).perform(click());
     }
 }
