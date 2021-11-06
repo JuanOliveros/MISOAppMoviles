@@ -39,13 +39,13 @@ class HomeActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_home) // AQUI
 
         val navGraph = navController.navInflater.inflate(R.navigation.mobile_navigation)
-        navGraph.startDestination = if (currentSection == "guest") R.id.nav_guest else R.id.nav_albums
+        navGraph.startDestination = if (currentSection == "guest") R.id.nav_guest else R.id.nav_collector_landing
 
         navController.graph = navGraph
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_guest, R.id.nav_artists, R.id.nav_albums, R.id.nav_collectors
+                R.id.nav_guest, R.id.nav_collector_landing, R.id.nav_artists, R.id.nav_albums, R.id.nav_collectors
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

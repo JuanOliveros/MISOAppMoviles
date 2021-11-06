@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_guest" />
 
     <fragment
+        android:id="@+id/nav_collector_landing"
+        android:name="com.example.vinilos.ui.fragments.CollectorLandingFragment"
+        android:label="@string/collector"
+        tools:layout="@layout/fragment_collector_landing" />
+
+    <fragment
         android:id="@+id/nav_artists"
         android:name="com.example.vinilos.ui.fragments.ArtistsFragment"
         android:label="@string/menu_artists"
