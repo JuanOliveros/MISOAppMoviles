@@ -1,10 +1,9 @@
-package com.example.vinilos.ui.albums
+package com.example.vinilos.ui.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.vinilos.model.Album
-import com.example.vinilos.provider.NetworkServiceAdapter
-import com.example.vinilos.repository.AlbumRepository
+import com.example.vinilos.models.Album
+import com.example.vinilos.repositories.AlbumRepository
 
 class AlbumsViewModel(application: Application) :  AndroidViewModel(application) {
 

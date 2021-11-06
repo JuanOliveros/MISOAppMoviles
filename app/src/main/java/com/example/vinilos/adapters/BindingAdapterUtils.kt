@@ -1,10 +1,7 @@
-package com.example.vinilos.adapter
+package com.example.vinilos.adapters
 
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import android.R
 import com.squareup.picasso.Picasso
 
 object BindingAdapterUtils {

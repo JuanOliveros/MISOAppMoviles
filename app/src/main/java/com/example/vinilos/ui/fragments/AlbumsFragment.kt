@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.albums
+package com.example.vinilos.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.databinding.FragmentAlbumsBinding
-import com.example.vinilos.model.Album
-import com.example.vinilos.adapter.AlbumAdapter
+import com.example.vinilos.models.Album
+import com.example.vinilos.adapters.AlbumAdapter
+import com.example.vinilos.ui.viewmodels.AlbumsViewModel
 
 class AlbumsFragment : Fragment() {
 
@@ -43,7 +44,8 @@ class AlbumsFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        viewModel = ViewModelProvider(this, AlbumsViewModel.Factory(activity.application)).get(AlbumsViewModel::class.java)
+        viewModel = ViewModelProvider(this, AlbumsViewModel.Factory(activity.application)).get(
+            AlbumsViewModel::class.java)
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             it.apply {
                 viewModelAdapter!!.albums = this

@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.guest
+package com.example.vinilos.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.example.vinilos.adapter
+package com.example.vinilos.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.AlbumItemBinding
-import com.example.vinilos.model.Album
+import com.example.vinilos.models.Album
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
 

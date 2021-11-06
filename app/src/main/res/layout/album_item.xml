@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="album" type="com.example.vinilos.model.Album"/>
+        <variable name="album" type="com.example.vinilos.models.Album"/>
     </data>
 
     <com.google.android.material.card.MaterialCardView

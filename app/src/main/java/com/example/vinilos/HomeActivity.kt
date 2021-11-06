@@ -2,6 +2,7 @@ package com.example.vinilos
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -44,15 +45,16 @@ class HomeActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val logoutButton: TextView = findViewById(R.id.logout_button)
+        logoutButton.setOnClickListener {
+            val intent = Intent(this, EntranceActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_home)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    fun onLogOutClick(view: android.view.View) {
-        val intent = Intent(this, EntranceActivity::class.java)
-        startActivity(intent)
     }
 }

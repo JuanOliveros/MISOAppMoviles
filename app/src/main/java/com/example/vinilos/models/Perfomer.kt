@@ -1,6 +1,4 @@
-package com.example.vinilos.model
-
-import java.util.*
+package com.example.vinilos.models
 
 data class Perfomer (
 

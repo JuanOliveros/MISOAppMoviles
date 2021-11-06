@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.artists
+package com.example.vinilos.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.vinilos.databinding.FragmentArtistsBinding
+import com.example.vinilos.databinding.FragmentCollectorsBinding
+import com.example.vinilos.ui.viewmodels.CollectorsViewModel
 
-class ArtistsFragment : Fragment() {
+class CollectorsFragment : Fragment() {
 
-    private lateinit var artistsViewModel: ArtistsViewModel
-    private var _binding: FragmentArtistsBinding? = null
+    private lateinit var collectorsViewModel: CollectorsViewModel
+    private var _binding: FragmentCollectorsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,14 +25,14 @@ class ArtistsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        artistsViewModel =
-            ViewModelProvider(this).get(ArtistsViewModel::class.java)
+        collectorsViewModel =
+            ViewModelProvider(this).get(CollectorsViewModel::class.java)
 
-        _binding = FragmentArtistsBinding.inflate(inflater, container, false)
+        _binding = FragmentCollectorsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textArtists
-        artistsViewModel.text.observe(viewLifecycleOwner, Observer {
+        val textView: TextView = binding.textCollectors
+        collectorsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

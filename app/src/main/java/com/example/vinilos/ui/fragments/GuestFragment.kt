@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.guest
+package com.example.vinilos.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentGuestBinding
 import android.widget.Button
 import com.example.vinilos.EntranceActivity
+import com.example.vinilos.ui.viewmodels.GuestViewModel
 
 
 /**
