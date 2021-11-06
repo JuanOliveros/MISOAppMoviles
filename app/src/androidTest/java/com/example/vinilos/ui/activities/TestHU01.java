@@ -73,4 +73,43 @@ public class TestHU01 {
                 .check(matches(isDisplayed()));
 
     }
+
+    @Test
+    public void guestCanExitFromMainScreenTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.guest_button));
+        guestBtn.check(matches(withText("Invitado")));
+        guestBtn.perform(click());
+
+        Thread.sleep(1000);
+
+        onView(anyOf(withId(R.id.exit_guest_button)))
+                .perform(click());
+
+        onView(withId(R.id.guest_button))
+                .check(matches(withText("Invitado")));
+
+    }
+
+    @Test
+    public void guestCanExitFromMenuTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.guest_button));
+        guestBtn.check(matches(withText("Invitado")));
+        guestBtn.perform(click());
+
+        Thread.sleep(1000);
+
+        onView(withId(R.id.drawer_layout))
+                .perform(DrawerActions.open()); // Open Drawer
+
+        Thread.sleep(1000);
+
+        onView(anyOf(withId(R.id.logout_button)))
+                .perform(click());
+
+        Thread.sleep(1000);
+
+        onView(withId(R.id.guest_button))
+                .check(matches(withText("Invitado")));
+
+    }
 }
