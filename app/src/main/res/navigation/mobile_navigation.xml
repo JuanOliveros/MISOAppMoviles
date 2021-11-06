@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_guest"
-        android:name="com.example.vinilos.GuestFragment"
+        android:name="com.example.vinilos.ui.guest.GuestFragment"
         android:label="@string/menu_guest"
         tools:layout="@layout/fragment_guest" />
 

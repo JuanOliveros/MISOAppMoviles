@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GuestFragment">
+    tools:context=".ui.guest.GuestFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -52,7 +52,6 @@
                 android:elevation="5dp"
                 android:insetLeft="20dp"
                 android:insetRight="20dp"
-                android:onClick="onGuestButtonClick"
                 android:padding="20dp"
                 android:text="@string/exit"
                 android:textSize="15sp"

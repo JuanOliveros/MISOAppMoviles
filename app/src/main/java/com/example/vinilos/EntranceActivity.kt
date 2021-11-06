@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import com.example.vinilos.databinding.ActivityEntranceBinding
 
 class EntranceActivity : AppCompatActivity() {
@@ -17,19 +18,22 @@ class EntranceActivity : AppCompatActivity() {
 
         val binding = ActivityEntranceBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    }
 
-    fun onCollectorButtonClick(view: android.view.View) {
-        val intent = Intent(this, HomeActivity::class.java).apply {
-            putExtra("section", collectorSection)
-        }
-        startActivity(intent)
-    }
+        val guestButton: Button = findViewById(R.id.guest_button)
+        val collectorButton: Button = findViewById(R.id.collector_button)
 
-    fun onGuestButtonClick(view: android.view.View) {
-        val intent = Intent(this, HomeActivity::class.java).apply {
-            putExtra("section", guestSection)
+        guestButton.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java).apply {
+                putExtra("section", guestSection)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
+
+        collectorButton.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java).apply {
+                putExtra("section", collectorSection)
+            }
+            startActivity(intent)
+        }
     }
 }

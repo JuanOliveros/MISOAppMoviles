@@ -1,4 +1,4 @@
-package com.example.vinilos
+package com.example.vinilos.ui.guest
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +10,8 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentGuestBinding
-import com.example.vinilos.GuestViewModel
-import android.R
 import android.widget.Button
+import com.example.vinilos.EntranceActivity
 
 
 /**
@@ -62,6 +61,4 @@ class GuestFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }
