@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.GuestFragment">
+    tools:context=".ui.fragments.CollectorLandingFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 tools:ignore="MissingConstraints" />
 
             <Button
-                android:id="@+id/exit_guest_button"
+                android:id="@+id/exit_collector_button"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"

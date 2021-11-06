@@ -42,15 +42,14 @@
                 android:padding="16dp" />
 
             <TextView
-                android:id="@+id/logout"
+                android:id="@+id/logout_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:fontFamily="@font/montserrat_bold"
                 android:minHeight="48dp"
-                android:onClick="onLogOutClick"
                 android:padding="16dp"
-                android:text="Salir"
+                android:text="@string/exit"
                 android:textStyle="bold"
                 app:itemTextColor="@color/white" />
         </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">vinilos</string>
+    <string name="app_name">Vinilos - Equipo 12</string>
     <string name="action_settings">Settings</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -16,6 +16,4 @@
     <string name="menu_collectors">Coleccionistas</string>
     <string name="menu_guest">Invitado</string>
     <string name="exit">Salir</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
