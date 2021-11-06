@@ -1,5 +1,6 @@
 package com.example.vinilos.ui.activities;
 
+import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -17,10 +18,17 @@ import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.is;
 
 import com.example.vinilos.EntranceActivity;
 
 import com.example.vinilos.R;
+import com.example.vinilos.ui.fragments.AlbumsFragment;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -38,13 +46,31 @@ public class TestHU01 {
 
     @Test
     public void guestSeesAlbumsOptionInMenuTest() throws InterruptedException {
-        ViewInteraction skipBtn = onView(withId(R.id.guest_button));
-        skipBtn.check(matches(withText("Invitado")));
-        skipBtn.perform(click());
+        ViewInteraction guestBtn = onView(withId(R.id.guest_button));
+        guestBtn.check(matches(withText("Invitado")));
+        guestBtn.perform(click());
 
         onView(withId(R.id.drawer_layout))
                 .perform(DrawerActions.open()); // Open Drawer
 
         onView(withText("Álbumes")).perform(click());
+    }
+
+    @Test
+    public void albumsAreListedInAlbumsSectionTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.guest_button));
+        guestBtn.check(matches(withText("Invitado")));
+        guestBtn.perform(click());
+
+        onView(withId(R.id.drawer_layout))
+                .perform(DrawerActions.open()); // Open Drawer
+
+        onView(withText("Álbumes")).perform(click());
+
+        Thread.sleep(2000);
+
+        onView(anyOf(withId(R.id.fragment_album)))
+                .check(matches(isDisplayed()));
+
     }
 }

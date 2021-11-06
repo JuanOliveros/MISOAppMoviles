@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/content_home.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2558876811594203" />
+        <entry key="app/src/main/res/layout/fragment_albums.xml" value="0.32608695652173914" />
         <entry key="app/src/main/res/layout/fragment_artists.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_collectors.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2558876811594203" />
