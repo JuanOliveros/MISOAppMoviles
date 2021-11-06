@@ -9,11 +9,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.vinilos.databinding.FragmentGuestBinding
 import android.widget.Button
 import com.example.vinilos.EntranceActivity
 import com.example.vinilos.databinding.FragmentCollectorLandingBinding
-import com.example.vinilos.ui.viewmodels.CollectorLandingViewModel
+import com.example.vinilos.viewmodels.CollectorLandingViewModel
 
 
 /**

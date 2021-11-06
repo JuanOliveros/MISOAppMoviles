@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.viewmodels
+package com.example.vinilos.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*

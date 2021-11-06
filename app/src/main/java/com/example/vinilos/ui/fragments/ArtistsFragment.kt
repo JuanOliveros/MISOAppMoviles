@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentArtistsBinding
-import com.example.vinilos.ui.viewmodels.ArtistsViewModel
+import com.example.vinilos.viewmodels.ArtistsViewModel
 
 class ArtistsFragment : Fragment() {
 

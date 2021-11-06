@@ -1,16 +1,16 @@
-package com.example.vinilos.ui.viewmodels
+package com.example.vinilos.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class GuestViewModel : ViewModel() {
+class CollectorLandingViewModel : ViewModel() {
 
     private val _title = MutableLiveData<String>().apply {
-        value = "Bienvenido Invitado"
+        value = "¡Bienvenido amigo coleccionista!"
     }
     private val _content = MutableLiveData<String>().apply {
-        value = "Bienvenido! Para acceder a las distinas opciones del app, haz click en el menu en la parte superior izquierda"
+        value = "Para acceder a las distinas opciones, haz clic en el menú en la parte superior izquierda"
     }
     val title: LiveData<String> = _title
     val content: LiveData<String> = _content

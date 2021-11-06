@@ -1,4 +1,4 @@
-package com.example.vinilos.adapters
+package com.example.vinilos.ui.adapters
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

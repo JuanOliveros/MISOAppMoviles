@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.databinding.FragmentAlbumsBinding
 import com.example.vinilos.models.Album
-import com.example.vinilos.adapters.AlbumAdapter
-import com.example.vinilos.ui.viewmodels.AlbumsViewModel
+import com.example.vinilos.ui.adapters.AlbumAdapter
+import com.example.vinilos.viewmodels.AlbumsViewModel
 
 class AlbumsFragment : Fragment() {
 

@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentGuestBinding
 import android.widget.Button
 import com.example.vinilos.EntranceActivity
-import com.example.vinilos.ui.viewmodels.GuestViewModel
+import com.example.vinilos.viewmodels.GuestViewModel
 
 
 /**
