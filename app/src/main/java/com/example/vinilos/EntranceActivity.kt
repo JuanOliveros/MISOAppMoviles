@@ -9,9 +9,6 @@ import com.example.vinilos.databinding.ActivityEntranceBinding
 
 class EntranceActivity : AppCompatActivity() {
 
-    private val collectorSection = "collector"
-    private val guestSection = "guest"
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,16 +20,14 @@ class EntranceActivity : AppCompatActivity() {
         val collectorButton: Button = findViewById(R.id.collector_button)
 
         guestButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java).apply {
-                putExtra("section", guestSection)
-            }
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("section", "guest")
             startActivity(intent)
         }
 
         collectorButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java).apply {
-                putExtra("section", collectorSection)
-            }
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("section", "collector")
             startActivity(intent)
         }
     }

@@ -2,6 +2,7 @@ package com.example.vinilos
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -25,8 +26,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val intent = getIntent()
-        val currentSection = intent.getStringExtra("Section")
-        // TODO: pass value to fragments
+        val currentSection = intent.getStringExtra("section")
 
         setSupportActionBar(binding.appBarHome.toolbar)
 
@@ -36,15 +36,25 @@ class HomeActivity : AppCompatActivity() {
         //getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
         val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_home)
+        val navController = findNavController(R.id.nav_host_fragment_content_home) // AQUI
+
+        val navGraph = navController.navInflater.inflate(R.navigation.mobile_navigation)
+        navGraph.startDestination = if (currentSection == "guest") R.id.nav_guest else R.id.nav_albums
+
+        navController.graph = navGraph
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_guest,R.id.nav_artists, R.id.nav_albums, R.id.nav_collectors
+                R.id.nav_guest, R.id.nav_artists, R.id.nav_albums, R.id.nav_collectors
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        if (currentSection == "collector") {
+            navView.menu.findItem(R.id.nav_artists).isVisible = false
+            navView.menu.findItem(R.id.nav_collectors).isVisible = false
+        }
 
         val logoutButton: TextView = findViewById(R.id.logout_button)
         logoutButton.setOnClickListener {

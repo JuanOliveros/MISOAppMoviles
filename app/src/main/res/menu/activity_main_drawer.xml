@@ -8,12 +8,15 @@
         app:showAsAction="always">
         <item
             android:id="@+id/nav_artists"
-            android:title="@string/menu_artists" />
+            android:title="@string/menu_artists"
+            android:visible="true" />
         <item
             android:id="@+id/nav_albums"
-            android:title="@string/menu_albums" />
+            android:title="@string/menu_albums"
+            android:visible="true" />
         <item
             android:id="@+id/nav_collectors"
-            android:title="@string/menu_collectors" />
+            android:title="@string/menu_collectors"
+            android:visible="true" />
     </group>
 </menu>
