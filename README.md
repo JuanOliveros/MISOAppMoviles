@@ -10,8 +10,7 @@ Vinilos es una aplicación móvil que permite ofrecer a los melómanos, coleccio
 
 ### Instalación
   1. `git clone` al repositorio en su máquina local.
-  2.  Debe tener isntalado la última verisón de Git.
-  3.  Use git para entrar a la rama que contiene el desarrollo `git checkout feature/HU01_ConsultarAlbumes`
+  2.  Use git para verificar que esté en la rama `main`
   4.  Abrir el proyecto en Android Studio y ejecutar.
   
 ## Ejecución de pruebas
