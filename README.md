@@ -15,7 +15,7 @@ Vinilos es una aplicación móvil que permite ofrecer a los melómanos, coleccio
   
 ## Ejecución de pruebas
 
-1. Asegurarse que el proyeto esté sincronizado con el Grandle.
+1. Asegurarse que el proyeto esté sincronizado con el Gradle.
 2. Ir a la ruta: `src/androidTest/java/com/example/vinilos/ui/activities/`
 3. Sobre el el archivo `TestHU01.java` dar click derecho.
 4. Dar click en run.
