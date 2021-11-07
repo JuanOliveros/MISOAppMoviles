@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single"
+        app:showAsAction="always">
+        <item
+            android:id="@+id/nav_artists"
+            android:title="@string/menu_artists"
+            android:visible="true" />
+        <item
+            android:id="@+id/nav_albums"
+            android:title="@string/menu_albums"
+            android:visible="true" />
+        <item
+            android:id="@+id/nav_collectors"
+            android:title="@string/menu_collectors"
+            android:visible="true" />
+    </group>
+</menu>
