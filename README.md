@@ -1,12 +1,12 @@
 # Vinilos para Android
 
-Vinilos es una aplicación móvil que permite ofrecer a los melómanos, coleccionista y personas grandes volúmenes de música recolectada desde esta misma.
+Vinilos es una aplicación móvil que permite ofrecer a los melómanos, coleccionistas y personas interesadas, grandes volúmenes de música recolectada desde esta misma.
 
 ## Iniciemos
 ### Requerimientos
   - Android Studio | última versión 
   - JDK >= 16.0
-  - Grandle >= 7
+  - Gradle >= 7
 
 ### Instalación
   1. `git clone` al repositorio en su máquina local.
