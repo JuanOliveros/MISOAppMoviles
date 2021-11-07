@@ -14,3 +14,5 @@ Vinilos es una aplicación móvil que permite ofrecer a los melómanos, coleccio
   4.  Abrir el proyecto en Android Studio y ejecutar.
   
 ## Ejecución de pruebas
+  1. Una vez inicializada la app correctamente ejecturar el archivo `TestHU01.java`
+  2. 
