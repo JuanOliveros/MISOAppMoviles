@@ -13,7 +13,7 @@ Vinilos es una aplicación móvil que permite ofrecer a los melómanos, coleccio
   2.  Use git para verificar que esté en la rama `main`
   3.  Abrir el proyecto en Android Studio, sincronizar Gradle y ejecutar.
   
-## Ejecución de pruebas
+## Ejecución de pruebas con Espresso
 
 1. Asegurarse que el proyecto esté sincronizado con el Gradle.
 2. Ir a la ruta: `src/androidTest/java/com/example/vinilos/ui/activities/`
