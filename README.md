@@ -17,7 +17,13 @@ Vinilos es una aplicación móvil que permite ofrecer a los melómanos, coleccio
 
 1. Asegurarse que el proyecto esté sincronizado con el Gradle.
 2. Ir a la ruta: `src/androidTest/java/com/example/vinilos/ui/activities/`
-3. Sobre el archivo `TestHU01.java` dar click derecho.
-4. Dar click en run.
+3. Sobre el archivo `TestHU01.java` dar clic derecho.
+4. Dar clic en run.
 
 ###### Nota: Verificar que el proyecto esté corriendo correctamente antes de inicar la pruebas. Evitar mensajes como: "System UI isn't responding" en la la pantalla.
+
+### APK para instalar en dispositivo físico
+
+El APK se encuentra en el directorio `apk-output` del raíz.
+
+Una vez copiado este archivo en el dispositivo, su proceso de instalación es ampliamente conocido.
