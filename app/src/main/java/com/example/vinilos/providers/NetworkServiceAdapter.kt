@@ -9,6 +9,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.Album
+import com.example.vinilos.models.Collector
 import com.fasterxml.jackson.module.kotlin.*
 import org.json.JSONObject
 
@@ -35,6 +36,20 @@ class NetworkServiceAdapter constructor(context: Context) {
                 { response ->
                     val mapper = jacksonObjectMapper()
                     var list: List<Album> = mapper.readValue(response)
+                    onComplete(list)
+                },
+                {
+                    onError(it)
+                })
+        )
+    }
+
+    fun getCollectors(onComplete: (resp: List<Collector>) -> Unit, onError: (error: VolleyError) -> Unit) {
+        requestQueue.add(
+            getRequest("collectors",
+                { response ->
+                    val mapper = jacksonObjectMapper()
+                    var list: List<Collector> = mapper.readValue(response)
                     onComplete(list)
                 },
                 {
