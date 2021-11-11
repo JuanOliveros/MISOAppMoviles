@@ -44,6 +44,20 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
+    fun getAlbum(id:Int, onComplete: (resp: Album) -> Unit, onError: (error: VolleyError) -> Unit) {
+        requestQueue.add(
+            getRequest("albums/$id",
+                { response ->
+                    val mapper = jacksonObjectMapper()
+                    var album: Album = mapper.readValue(response)
+                    onComplete(album)
+                },
+                {
+                    onError(it)
+                })
+        )
+    }
+
     fun getCollectors(onComplete: (resp: List<Collector>) -> Unit, onError: (error: VolleyError) -> Unit) {
         requestQueue.add(
             getRequest("collectors",
