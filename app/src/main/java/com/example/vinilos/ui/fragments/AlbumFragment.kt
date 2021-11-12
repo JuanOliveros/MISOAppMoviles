@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.databinding.FragmentAlbumBinding
 import com.example.vinilos.models.Album
-import com.example.vinilos.ui.adapters.AlbumAdapter
 import com.example.vinilos.ui.adapters.AlbumDetailAdapter
+import com.example.vinilos.ui.adapters.AlbumCommentAdapter
 import com.example.vinilos.viewmodels.AlbumViewModel
 
 class AlbumFragment : Fragment() {
@@ -25,6 +25,9 @@ class AlbumFragment : Fragment() {
     private lateinit var viewModel: AlbumViewModel
     private lateinit var recyclerView: RecyclerView
     private var viewModelAdapter: AlbumDetailAdapter? = null
+    private lateinit var commentRecyclerView: RecyclerView
+    private var commentViewModelAdapter: AlbumCommentAdapter? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +37,7 @@ class AlbumFragment : Fragment() {
         _binding!!.lifecycleOwner = this
         val view = binding.root
         viewModelAdapter = AlbumDetailAdapter()
+        commentViewModelAdapter = AlbumCommentAdapter()
         return view
     }
 
@@ -41,6 +45,10 @@ class AlbumFragment : Fragment() {
         recyclerView = binding.albumTracksList
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        commentRecyclerView = binding.albumCommentsList
+        commentRecyclerView.layoutManager = LinearLayoutManager(context)
+        commentRecyclerView.adapter = commentViewModelAdapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,6 +63,7 @@ class AlbumFragment : Fragment() {
             it.apply {
                 binding.album = this
                 viewModelAdapter!!.tracks = this.tracks!!
+                commentViewModelAdapter!!.comments = this.comments!!
                 Log.i("album", this.toString())
             }
         })
