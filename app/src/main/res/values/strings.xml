@@ -17,4 +17,5 @@
     <string name="menu_guest">Invitado</string>
     <string name="exit">Salir</string>
     <string name="album">Álbum</string>
+    <string name="release_date">Fecha lanzamiento:</string>
 </resources>

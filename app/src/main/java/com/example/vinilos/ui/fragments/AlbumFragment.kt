@@ -25,7 +25,7 @@ class AlbumFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
-        //_binding!!.lifecycleOwner = this
+        _binding!!.lifecycleOwner = this
         val view = binding.root
         return view
     }
@@ -40,7 +40,7 @@ class AlbumFragment : Fragment() {
             AlbumViewModel::class.java)
         viewModel.album.observe(viewLifecycleOwner, Observer<Album> {
             it.apply {
-                //binding.album = this
+                binding.album = this
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
