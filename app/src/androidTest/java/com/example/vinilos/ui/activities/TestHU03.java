@@ -40,4 +40,22 @@ public class TestHU03 {
         onView(withText("Artistas")).perform(click());
     }
 
+    @Test
+    public void artistsAreListedInArtistsSectionTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.guest_button));
+        guestBtn.check(matches(withText("Invitado")));
+        guestBtn.perform(click());
+
+        onView(withId(R.id.drawer_layout))
+                .perform(DrawerActions.open()); // Open Drawer
+
+        onView(withText("Artistas")).perform(click());
+
+        Thread.sleep(2000);
+
+        onView(anyOf(withId(R.id.fragment_artist)))
+                .check(matches(isDisplayed()));
+
+    }
+
 }
