@@ -7,6 +7,9 @@ data class Perfomer (
     var image : String?,
     var description : String?,
     var birthDate : String?,
-    var creationDate: String?
+    var creationDate: String?,
+    var albums:List<Album>?,
+    var performerPrizes:List<Prize>?,
+    var musicians:List<String>?,
 
 )
