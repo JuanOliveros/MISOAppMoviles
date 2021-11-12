@@ -10,8 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.databinding.FragmentAlbumBinding
 import com.example.vinilos.models.Album
+import com.example.vinilos.ui.adapters.AlbumAdapter
+import com.example.vinilos.ui.adapters.AlbumDetailAdapter
 import com.example.vinilos.viewmodels.AlbumViewModel
 
 class AlbumFragment : Fragment() {
@@ -19,6 +23,8 @@ class AlbumFragment : Fragment() {
     private var _binding: FragmentAlbumBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: AlbumViewModel
+    private lateinit var recyclerView: RecyclerView
+    private var viewModelAdapter: AlbumDetailAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +33,14 @@ class AlbumFragment : Fragment() {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
         _binding!!.lifecycleOwner = this
         val view = binding.root
+        viewModelAdapter = AlbumDetailAdapter()
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        recyclerView = binding.albumTracksList
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = viewModelAdapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -41,6 +54,8 @@ class AlbumFragment : Fragment() {
         viewModel.album.observe(viewLifecycleOwner, Observer<Album> {
             it.apply {
                 binding.album = this
+                viewModelAdapter!!.tracks = this.tracks!!
+                Log.i("album", this.toString())
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->

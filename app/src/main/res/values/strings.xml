@@ -18,4 +18,5 @@
     <string name="exit">Salir</string>
     <string name="album">Álbum</string>
     <string name="release_date">Fecha lanzamiento:</string>
+    <string name="tracks">Canciones</string>
 </resources>
