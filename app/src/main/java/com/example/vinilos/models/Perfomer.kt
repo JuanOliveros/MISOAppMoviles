@@ -13,5 +13,5 @@ data class Perfomer (
     var creationDate: String?,
     var albums:List<Album>?,
     var performerPrizes:List<Prize>?,
-    var musicians:List<String>?,
+    var musicians:List<String>?
 )

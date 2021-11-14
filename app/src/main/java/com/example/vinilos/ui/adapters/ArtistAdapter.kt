@@ -24,8 +24,8 @@ class ArtistAdapter(private val onItemClicked: (position: Int) -> Unit) : Recycl
             ArtistViewHolder.LAYOUT,
             parent,
             false)
-
         return ArtistViewHolder(withDataBinding,onItemClicked)
+
     }
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
@@ -47,12 +47,9 @@ class ArtistAdapter(private val onItemClicked: (position: Int) -> Unit) : Recycl
         init {
             itemView.setOnClickListener(this)
         }
-
         override fun onClick(v: View) {
             val position = adapterPosition
             onItemClicked(position)
         }
-
     }
-
 }

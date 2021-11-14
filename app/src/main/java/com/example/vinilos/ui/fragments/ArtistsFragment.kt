@@ -14,15 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.models.Perfomer
 import com.example.vinilos.ui.adapters.ArtistAdapter
 import com.example.vinilos.viewmodels.ArtistsViewModel
-import android.R
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import com.fasterxml.jackson.databind.ObjectMapper
-
-
-
-
 
 class ArtistsFragment : Fragment() {
 
