@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.models.Perfomer
 import com.example.vinilos.ui.adapters.ArtistAdapter
 import com.example.vinilos.viewmodels.ArtistsViewModel
+import androidx.navigation.findNavController
+import com.fasterxml.jackson.databind.ObjectMapper
 
 class ArtistsFragment : Fragment() {
 
@@ -29,7 +31,12 @@ class ArtistsFragment : Fragment() {
     ): View? {
         _binding = FragmentArtistsBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = ArtistAdapter()
+        val objectMapper = ObjectMapper()
+        val itemOnClick: (position: Int) -> Unit = { position ->
+            val action = ArtistsFragmentDirections.actionArtistFragmentToArtistDetailsFragment(content = objectMapper.writeValueAsString(viewModel.artists.value?.get(position)) )
+            view.findNavController().navigate(action)
+        }
+        viewModelAdapter = ArtistAdapter(itemOnClick)
         return view
     }
 

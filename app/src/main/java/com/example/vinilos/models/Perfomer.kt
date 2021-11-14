@@ -1,5 +1,8 @@
 package com.example.vinilos.models
 
+import com.fasterxml.jackson.annotation.JsonInclude
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 data class Perfomer (
 
     var id : Int?,

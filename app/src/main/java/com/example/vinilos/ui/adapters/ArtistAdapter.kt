@@ -1,6 +1,7 @@
 package com.example.vinilos.ui.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
@@ -9,7 +10,7 @@ import com.example.vinilos.R
 import com.example.vinilos.databinding.ArtistItemBinding
 import com.example.vinilos.models.Perfomer
 
-class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
+class ArtistAdapter(private val onItemClicked: (position: Int) -> Unit) : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
 
     var artists :List<Perfomer> = emptyList()
         set(value) {
@@ -23,7 +24,8 @@ class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
             ArtistViewHolder.LAYOUT,
             parent,
             false)
-        return ArtistViewHolder(withDataBinding)
+        return ArtistViewHolder(withDataBinding,onItemClicked)
+
     }
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
@@ -36,14 +38,18 @@ class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
         return artists.size
     }
 
-    class ArtistViewHolder(val viewDataBinding: ArtistItemBinding) :
-        RecyclerView.ViewHolder(viewDataBinding.root) {
+    class ArtistViewHolder(val viewDataBinding: ArtistItemBinding, private val onItemClicked: (position: Int) -> Unit) :
+        RecyclerView.ViewHolder(viewDataBinding.root),View.OnClickListener {
         companion object {
             @LayoutRes
             val LAYOUT = R.layout.artist_item
         }
+        init {
+            itemView.setOnClickListener(this)
+        }
+        override fun onClick(v: View) {
+            val position = adapterPosition
+            onItemClicked(position)
+        }
     }
-
 }
-
-
