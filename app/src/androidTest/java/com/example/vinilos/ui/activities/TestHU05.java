@@ -49,4 +49,22 @@ public class TestHU05 {
         onView(withText("Coleccionistas")).perform(click());
     }
 
+    @Test
+    public void collectorsAreListedInCollectorsSectionTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.guest_button));
+        guestBtn.check(matches(withText("Invitado")));
+        guestBtn.perform(click());
+
+        onView(withId(R.id.drawer_layout))
+                .perform(DrawerActions.open()); // Open Drawer
+
+        onView(withText("Coleccionistas")).perform(click());
+
+        Thread.sleep(2000);
+
+        onView(anyOf(withId(R.id.fragment_collector)))
+                .check(matches(isDisplayed()));
+
+    }
+
 }
