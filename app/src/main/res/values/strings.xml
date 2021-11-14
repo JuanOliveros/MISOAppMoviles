@@ -16,4 +16,8 @@
     <string name="menu_collectors">Coleccionistas</string>
     <string name="menu_guest">Invitado</string>
     <string name="exit">Salir</string>
+    <string name="album">Álbum</string>
+    <string name="release_date">Fecha lanzamiento:</string>
+    <string name="tracks">Canciones</string>
+    <string name="comments">Comentarios</string>
 </resources>
