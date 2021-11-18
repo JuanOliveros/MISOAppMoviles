@@ -44,7 +44,11 @@
         android:id="@+id/nav_artists"
         android:name="com.example.vinilos.ui.fragments.ArtistsFragment"
         android:label="@string/menu_artists"
-        tools:layout="@layout/fragment_artists" />
+        tools:layout="@layout/fragment_artists" >
+        <action
+            android:id="@+id/action_artistFragment_to_ArtistDetailsFragment"
+            app:destination="@id/nav_artist_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_albums"
@@ -69,4 +73,15 @@
         android:name="com.example.vinilos.ui.fragments.CollectorsFragment"
         android:label="@string/menu_collectors"
         tools:layout="@layout/fragment_collectors" />
+
+    <fragment
+        android:id="@+id/nav_artist_detail"
+        android:name="com.example.vinilos.ui.fragments.ArtistDetailsFragment"
+        android:label="@string/menu_artists"
+        tools:layout="@layout/fragment_artist_details" >
+        <argument
+            android:name="content"
+            app:argType="string" />
+    </fragment>
+
 </navigation>
