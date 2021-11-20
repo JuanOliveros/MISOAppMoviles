@@ -33,7 +33,7 @@ class GuestFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         guestViewModel =
             ViewModelProvider(this).get(GuestViewModel::class.java)
 

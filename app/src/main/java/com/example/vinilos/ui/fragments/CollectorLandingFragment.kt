@@ -33,9 +33,9 @@ class CollectorLandingFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         collectorLandingViewModel =
-            ViewModelProvider(this).get(CollectorLandingViewModel::class.java)
+            ViewModelProvider(this)[CollectorLandingViewModel::class.java]
 
         _binding = FragmentCollectorLandingBinding.inflate(inflater, container, false)
         val root: View = binding.root

@@ -28,7 +28,7 @@ class ArtistsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentArtistsBinding.inflate(inflater, container, false)
         val view = binding.root
         val objectMapper = ObjectMapper()

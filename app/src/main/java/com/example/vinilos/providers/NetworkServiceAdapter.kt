@@ -1,16 +1,13 @@
 package com.example.vinilos.providers
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.*
-import com.fasterxml.jackson.module.kotlin.*
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -39,9 +36,9 @@ class NetworkServiceAdapter constructor(context: Context) {
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
-                var listTracks = mutableListOf<Track>()
-                var listPerformers = mutableListOf<Performer>()
-                var listComments = mutableListOf<Comment>()
+                val listTracks = mutableListOf<Track>()
+                val listPerformers = mutableListOf<Performer>()
+                val listComments = mutableListOf<Comment>()
                 var item:JSONObject? = null
                 //var tracks:JSONArray? = null
 
@@ -117,7 +114,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                     commentsList.add(i, Comment(id = comment.getInt("id"), description = comment.getString("description"), rating = comment.getString("rating")))
                 }
 
-                var album = Album(
+                val album = Album(
                     id = item.getInt("id"),
                     name = item.getString("name"),
                     cover = item.getString("cover"),
@@ -142,9 +139,9 @@ class NetworkServiceAdapter constructor(context: Context) {
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Collector>()
-                var listCA : List<CollectorAlbum> = listOf()
-                var listComments : List<Comment> = listOf()
-                var listFP : List<Performer> = listOf()
+                val listCA : List<CollectorAlbum> = listOf()
+                val listComments : List<Comment> = listOf()
+                val listFP : List<Performer> = listOf()
                 var item:JSONObject? = null
 
                 for (i in 0 until resp.length()) {
@@ -172,9 +169,9 @@ class NetworkServiceAdapter constructor(context: Context) {
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Performer>()
-                var listAlbums : List<Album> = listOf()
-                var listPrizes : List<Prize> = listOf()
-                var listMusicians : List<String> = listOf()
+                val listAlbums : List<Album> = listOf()
+                val listPrizes : List<Prize> = listOf()
+                val listMusicians : List<String> = listOf()
                 var item:JSONObject? = null
 
                 for (i in 0 until resp.length()) {
