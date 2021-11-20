@@ -3,7 +3,7 @@ package com.example.vinilos.models
 import com.fasterxml.jackson.annotation.JsonInclude
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class Perfomer (
+data class Performer (
 
     var id : Int?,
     var name : String?,

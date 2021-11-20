@@ -11,7 +11,7 @@ import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentArtistDetailsBinding
-import com.example.vinilos.models.Perfomer
+import com.example.vinilos.models.Performer
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.android.synthetic.main.fragment_artist_details.*
@@ -26,7 +26,7 @@ class ArtistDetailsFragment () : Fragment() {
 
     private val binding get() = _binding!!
 
-    private lateinit var artist: Perfomer
+    private lateinit var artist: Performer
 
     companion object {
         const val CONTENT = "content"
@@ -48,7 +48,6 @@ class ArtistDetailsFragment () : Fragment() {
         val root: View = binding.root
         //val textView: TextView = root.findViewById(R.id.)
 
-
         return root
     }
 
@@ -61,7 +60,6 @@ class ArtistDetailsFragment () : Fragment() {
         artistName.text = artist.name
         val artistDes: TextView = view.findViewById(R.id.artist_detail_description)
         artistDes.text = artist.description
-
     }
 
     override fun onDestroyView() {
