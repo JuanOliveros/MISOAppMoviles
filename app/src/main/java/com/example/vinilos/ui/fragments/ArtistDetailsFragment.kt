@@ -40,7 +40,6 @@ class ArtistDetailsFragment : Fragment() {
         }
 
         _binding = FragmentArtistDetailsBinding.inflate(inflater, container, false)
-        //val textView: TextView = root.findViewById(R.id.)
 
         return binding.root
     }

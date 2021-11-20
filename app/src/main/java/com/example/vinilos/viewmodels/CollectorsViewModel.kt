@@ -31,16 +31,6 @@ class CollectorsViewModel(application: Application) :  AndroidViewModel(applicat
         refreshDataFromNetwork()
     }
 
-    /*private fun refreshDataFromNetwork() {
-        collectorsRepository.refreshData({
-            _collectors.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
-            _eventNetworkError.value = true
-        })
-    }*/
-
     private fun refreshDataFromNetwork() {
         try {
             viewModelScope.launch (Dispatchers.Default){

@@ -43,5 +43,4 @@ class AlbumDetailAdapter : RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailVi
             val LAYOUT = R.layout.album_track_item
         }
     }
-
 }
