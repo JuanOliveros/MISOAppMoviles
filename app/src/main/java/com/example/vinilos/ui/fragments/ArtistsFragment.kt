@@ -11,7 +11,7 @@ import com.example.vinilos.databinding.FragmentArtistsBinding
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vinilos.models.Perfomer
+import com.example.vinilos.models.Performer
 import com.example.vinilos.ui.adapters.ArtistAdapter
 import com.example.vinilos.viewmodels.ArtistsViewModel
 import androidx.navigation.findNavController
@@ -53,7 +53,7 @@ class ArtistsFragment : Fragment() {
         }
         viewModel = ViewModelProvider(this, ArtistsViewModel.Factory(activity.application)).get(
             ArtistsViewModel::class.java)
-        viewModel.artists.observe(viewLifecycleOwner, Observer<List<Perfomer>> {
+        viewModel.artists.observe(viewLifecycleOwner, Observer<List<Performer>> {
             it.apply {
                 viewModelAdapter!!.artists = this
             }

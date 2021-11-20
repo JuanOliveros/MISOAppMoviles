@@ -5,7 +5,7 @@ data class Collector (
     var name:String?,
     var email:String?,
     var telephone:String?,
-    var favoritePerformers:List<Perfomer>?,
+    var favoritePerformers:List<Performer>?,
     var comments:List<Comment>?,
     var collectorAlbums:List<CollectorAlbum>?
 ) {}

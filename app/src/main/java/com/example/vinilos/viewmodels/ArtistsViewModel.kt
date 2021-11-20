@@ -2,16 +2,19 @@ package com.example.vinilos.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.vinilos.models.Perfomer
+import com.example.vinilos.models.Performer
 import com.example.vinilos.repositories.ArtistRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ArtistsViewModel(application: Application) : AndroidViewModel(application) {
 
     private val artistsRepository = ArtistRepository(application)
 
-    private val _artists = MutableLiveData<List<Perfomer>>()
+    private val _artists = MutableLiveData<List<Performer>>()
 
-    val artists: LiveData<List<Perfomer>>
+    val artists: LiveData<List<Performer>>
         get() = _artists
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
@@ -29,13 +32,19 @@ class ArtistsViewModel(application: Application) : AndroidViewModel(application)
     }
 
     private fun refreshDataFromNetwork() {
-        artistsRepository.refreshData({
-            _artists.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+        try {
+            viewModelScope.launch (Dispatchers.Default){
+                withContext(Dispatchers.IO){
+                    var data = artistsRepository.refreshData()
+                    _artists.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }
+        catch (e:Exception){
             _eventNetworkError.value = true
-        })
+        }
     }
 
     fun onNetworkErrorShown() {

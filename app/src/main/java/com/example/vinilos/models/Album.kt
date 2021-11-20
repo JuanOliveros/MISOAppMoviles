@@ -12,7 +12,7 @@ data class Album (
     var genre:String?,
     var recordLabel:String?,
     var tracks:List<Track>?,
-    var performers:List<Perfomer>?,
+    var performers:List<Performer>?,
     var comments:List<Comment>?
 ){
     val release: String

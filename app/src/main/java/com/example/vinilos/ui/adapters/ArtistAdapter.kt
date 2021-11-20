@@ -8,11 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.ArtistItemBinding
-import com.example.vinilos.models.Perfomer
+import com.example.vinilos.models.Performer
 
 class ArtistAdapter(private val onItemClicked: (position: Int) -> Unit) : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
 
-    var artists :List<Perfomer> = emptyList()
+    var artists :List<Performer> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
