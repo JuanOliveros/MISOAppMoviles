@@ -8,4 +8,4 @@ data class Collector (
     var favoritePerformers:List<Performer>?,
     var comments:List<Comment>?,
     var collectorAlbums:List<CollectorAlbum>?
-) {}
+)

@@ -18,7 +18,7 @@ data class Album (
     val release: String
         get() = releaseDate?.subSequence(0, 10).toString()
 
-    public fun getArtists() : String? {
+    fun getArtists() : String? {
         return performers?.map { it.name }?.joinToString(",")
     }
 }

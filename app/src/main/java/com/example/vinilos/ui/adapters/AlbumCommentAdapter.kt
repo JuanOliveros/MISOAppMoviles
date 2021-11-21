@@ -43,5 +43,4 @@ class AlbumCommentAdapter : RecyclerView.Adapter<AlbumCommentAdapter.AlbumCommen
             val LAYOUT = R.layout.album_comment_item
         }
     }
-
 }

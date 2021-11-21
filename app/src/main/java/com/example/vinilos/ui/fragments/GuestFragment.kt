@@ -15,25 +15,17 @@ import com.example.vinilos.EntranceActivity
 import com.example.vinilos.viewmodels.GuestViewModel
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [GuestFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class GuestFragment : Fragment() {
 
     private lateinit var guestViewModel: GuestViewModel
     private var _binding: FragmentGuestBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         guestViewModel =
             ViewModelProvider(this).get(GuestViewModel::class.java)
 

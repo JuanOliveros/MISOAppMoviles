@@ -1,26 +1,21 @@
 package com.example.vinilos.ui.fragments
 
-import android.icu.number.NumberFormatter.with
-import android.icu.number.NumberRangeFormatter.with
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentArtistDetailsBinding
 import com.example.vinilos.models.Performer
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import kotlinx.android.synthetic.main.fragment_artist_details.*
 
 import android.widget.TextView
 import com.example.vinilos.R
 import com.squareup.picasso.Picasso
 
-class ArtistDetailsFragment () : Fragment() {
+class ArtistDetailsFragment : Fragment() {
 
     private var _binding: FragmentArtistDetailsBinding? = null
 
@@ -36,7 +31,7 @@ class ArtistDetailsFragment () : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val mapper = jacksonObjectMapper()
 
@@ -45,10 +40,8 @@ class ArtistDetailsFragment () : Fragment() {
         }
 
         _binding = FragmentArtistDetailsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        //val textView: TextView = root.findViewById(R.id.)
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

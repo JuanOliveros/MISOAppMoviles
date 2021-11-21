@@ -1,7 +1,6 @@
 package com.example.vinilos.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +31,7 @@ class AlbumFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
         _binding!!.lifecycleOwner = this
         val view = binding.root
@@ -64,7 +63,6 @@ class AlbumFragment : Fragment() {
                 binding.album = this
                 viewModelAdapter!!.tracks = this.tracks!!
                 commentViewModelAdapter!!.comments = this.comments!!
-                Log.i("album", this.toString())
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->

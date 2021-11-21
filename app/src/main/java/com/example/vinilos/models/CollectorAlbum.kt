@@ -6,4 +6,4 @@ data class CollectorAlbum (
     var status:String?,
     var album:Album?,
     var collector:Collector?
-) {}
+)

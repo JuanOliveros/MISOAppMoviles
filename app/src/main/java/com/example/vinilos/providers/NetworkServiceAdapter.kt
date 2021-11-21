@@ -1,16 +1,13 @@
 package com.example.vinilos.providers
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.*
-import com.fasterxml.jackson.module.kotlin.*
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -39,20 +36,14 @@ class NetworkServiceAdapter constructor(context: Context) {
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
-                var listTracks = mutableListOf<Track>()
-                var listPerformers = mutableListOf<Performer>()
-                var listComments = mutableListOf<Comment>()
+                val listTracks = mutableListOf<Track>()
+                val listPerformers = mutableListOf<Performer>()
+                val listComments = mutableListOf<Comment>()
                 var item:JSONObject? = null
-                //var tracks:JSONArray? = null
 
-                for (i in 0 until resp.length()) {
+                val respSize = resp.length()
+                for (i in 0 until respSize) {
                     item = resp.getJSONObject(i)
-
-                    /*tracks = item.getJSONArray("tracks")
-                    for (j in 0 until tracks.length()) {
-                        val itemT = tracks.getJSONObject(j)
-                        listTracks.add(j, Track(id = itemT.getInt("id"),duration = itemT.getString("duration"),name = itemT.getString("name")))
-                    }*/
 
                     list.add(i, Album(
                         id = item.getInt("id"),
@@ -87,7 +78,8 @@ class NetworkServiceAdapter constructor(context: Context) {
                 var comment:JSONObject? = null
 
                 val tracksArray = JSONArray(item.get("tracks").toString())
-                for (i in 0 until tracksArray.length()) {
+                val tracksArrayLength = tracksArray.length()
+                for (i in 0 until tracksArrayLength) {
                     track = tracksArray.getJSONObject(i)
                     tracksList.add(i, Track(id = track.getInt("id"), name = track.getString("name"), duration = track.getString("duration")))
                 }
@@ -96,7 +88,8 @@ class NetworkServiceAdapter constructor(context: Context) {
                 val listPrizes = mutableListOf<Prize>()
                 val listMusicians = mutableListOf<String>()
                 val performersArray = JSONArray(item.get("performers").toString())
-                for (i in 0 until performersArray.length()) {
+                val performersArrayLength = performersArray.length()
+                for (i in 0 until performersArrayLength) {
                     performer = performersArray.getJSONObject(i)
                     performersList.add(i, Performer(
                         id = performer.getInt("id"),
@@ -112,12 +105,13 @@ class NetworkServiceAdapter constructor(context: Context) {
                 }
 
                 val commentsArray = JSONArray(item.get("comments").toString())
-                for (i in 0 until commentsArray.length()) {
+                val commentsArrayLength = commentsArray.length()
+                for (i in 0 until commentsArrayLength) {
                     comment = commentsArray.getJSONObject(i)
                     commentsList.add(i, Comment(id = comment.getInt("id"), description = comment.getString("description"), rating = comment.getString("rating")))
                 }
 
-                var album = Album(
+                val album = Album(
                     id = item.getInt("id"),
                     name = item.getString("name"),
                     cover = item.getString("cover"),
@@ -142,12 +136,13 @@ class NetworkServiceAdapter constructor(context: Context) {
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Collector>()
-                var listCA : List<CollectorAlbum> = listOf()
-                var listComments : List<Comment> = listOf()
-                var listFP : List<Performer> = listOf()
+                val listCA : List<CollectorAlbum> = listOf()
+                val listComments : List<Comment> = listOf()
+                val listFP : List<Performer> = listOf()
                 var item:JSONObject? = null
 
-                for (i in 0 until resp.length()) {
+                val respLength = resp.length()
+                for (i in 0 until respLength) {
                     item = resp.getJSONObject(i)
                     list.add(i, Collector(
                         id = item.getInt("id"),
@@ -172,12 +167,13 @@ class NetworkServiceAdapter constructor(context: Context) {
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Performer>()
-                var listAlbums : List<Album> = listOf()
-                var listPrizes : List<Prize> = listOf()
-                var listMusicians : List<String> = listOf()
+                val listAlbums : List<Album> = listOf()
+                val listPrizes : List<Prize> = listOf()
+                val listMusicians : List<String> = listOf()
                 var item:JSONObject? = null
 
-                for (i in 0 until resp.length()) {
+                val respLength = resp.length()
+                for (i in 0 until respLength) {
                     item = resp.getJSONObject(i)
                     list.add(i, Performer(
                         id = item.getInt("id"),
@@ -202,10 +198,12 @@ class NetworkServiceAdapter constructor(context: Context) {
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
-    private fun postRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
+    /* Commented out since we're not using this code right now */
+    /* But we'll probably use it in the near future */
+    /*private fun postRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
         return  JsonObjectRequest(Request.Method.POST, BASE_URL+path, body, responseListener, errorListener)
     }
     private fun putRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
         return JsonObjectRequest(Request.Method.PUT, BASE_URL + path, body, responseListener, errorListener)
-    }
+    }*/
 }

@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:background="@color/blue_main"
     android:theme="@style/ThemeOverlay.Vinilos.FullscreenContainer"
-    tools:context=".EntranceActivity">
+    tools:context=".EntranceActivity"
+    tools:ignore="Overdraw">
 
     <ImageView
         android:id="@+id/imageView"
