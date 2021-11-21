@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="artist" type="com.example.vinilos.models.Performer"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="#EDFAFF">
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:background="#5FCDFC" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="4dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                app:imageUrl="@{artist.image}" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp">
+
+                <TextView
+                    android:id="@+id/textArtistName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@{artist.name}"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

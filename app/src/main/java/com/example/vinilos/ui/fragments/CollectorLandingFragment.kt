@@ -15,27 +15,19 @@ import com.example.vinilos.databinding.FragmentCollectorLandingBinding
 import com.example.vinilos.viewmodels.CollectorLandingViewModel
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CollectorLandingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CollectorLandingFragment : Fragment() {
 
     private lateinit var collectorLandingViewModel: CollectorLandingViewModel
     private var _binding: FragmentCollectorLandingBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         collectorLandingViewModel =
-            ViewModelProvider(this).get(CollectorLandingViewModel::class.java)
+            ViewModelProvider(this)[CollectorLandingViewModel::class.java]
 
         _binding = FragmentCollectorLandingBinding.inflate(inflater, container, false)
         val root: View = binding.root
