@@ -162,6 +162,59 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
+    suspend fun getCollector(id: Int) = suspendCoroutine<Collector>{ cont->
+        requestQueue.add(getRequest("collectors/$id",
+            Response.Listener<String> { response ->
+                val item = JSONObject(response)
+                val albumsList = mutableListOf<CollectorAlbum>()
+                val performersList = mutableListOf<Performer>()
+                val commentsList = mutableListOf<Comment>()
+                var performer:JSONObject? = null
+                var comment:JSONObject? = null
+
+                val listAlbums = mutableListOf<Album>()
+                val listPrizes = mutableListOf<Prize>()
+                val listMusicians = mutableListOf<String>()
+                val performersArray = JSONArray(item.get("favoritePerformers").toString())
+                val performersArrayLength = performersArray.length()
+                for (i in 0 until performersArrayLength) {
+                    performer = performersArray.getJSONObject(i)
+                    performersList.add(i, Performer(
+                        id = performer.getInt("id"),
+                        name = performer.getString("name"),
+                        image = performer.getString("image"),
+                        description = performer.getString("description"),
+                        birthDate = performer.optString("birthDate"),
+                        creationDate = performer.optString("creationDate"),
+                        albums = listAlbums,
+                        performerPrizes = listPrizes,
+                        musicians = listMusicians
+                    ))
+                }
+
+                val commentsArray = JSONArray(item.get("comments").toString())
+                val commentsArrayLength = commentsArray.length()
+                for (i in 0 until commentsArrayLength) {
+                    comment = commentsArray.getJSONObject(i)
+                    commentsList.add(i, Comment(id = comment.getInt("id"), description = comment.getString("description"), rating = comment.getString("rating")))
+                }
+
+                val collector = Collector(
+                    id = item.getInt("id"),
+                    name = item.getString("name"),
+                    telephone = item.getString("telephone"),
+                    email = item.getString("email"),
+                    collectorAlbums = albumsList,
+                    comments = commentsList,
+                    favoritePerformers = performersList)
+                cont.resume(collector)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            })
+        )
+    }
+
     suspend fun getArtists() = suspendCoroutine<List<Performer>>{ cont->
         requestQueue.add(getRequest("bands",
             Response.Listener<String> { response ->

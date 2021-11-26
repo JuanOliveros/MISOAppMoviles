@@ -14,4 +14,5 @@
     <string name="release_date">Fecha lanzamiento:</string>
     <string name="tracks">Canciones</string>
     <string name="comments">Comentarios</string>
+    <string name="artists">Artistas favoritos</string>
 </resources>

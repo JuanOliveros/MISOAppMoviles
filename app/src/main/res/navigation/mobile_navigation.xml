@@ -72,7 +72,20 @@
         android:id="@+id/nav_collectors"
         android:name="com.example.vinilos.ui.fragments.CollectorsFragment"
         android:label="@string/menu_collectors"
-        tools:layout="@layout/fragment_collectors" />
+        tools:layout="@layout/fragment_collectors" >
+        <action
+            android:id="@+id/action_nav_collectors_to_collectorDetail"
+            app:destination="@id/collectorDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorDetail"
+        android:name="com.example.vinilos.ui.fragments.CollectorFragment"
+        android:label="@string/collector"
+        tools:layout="@layout/fragment_collector">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_artist_detail"
