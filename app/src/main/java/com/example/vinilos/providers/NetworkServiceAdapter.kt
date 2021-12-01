@@ -253,11 +253,12 @@ class NetworkServiceAdapter constructor(context: Context) {
         requestQueue.add(postRequest("albums",
             albumData,
             Response.Listener<JSONObject> { response ->
-                val resp = JSONArray(response)
+                val resp = response
                 Log.i("Response", resp.toString())
+                cont.resume(200)
             },
             Response.ErrorListener {
-                cont.resumeWithException(it)
+                cont.resume(400)
             })
         )
     }
