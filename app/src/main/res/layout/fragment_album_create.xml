@@ -23,7 +23,7 @@
         android:layout_margin="8sp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/album_name"
+        android:hint="@string/album_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:layout_margin="8sp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/album_cover"
+        android:hint="@string/album_cover"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/albumNameField" />
@@ -48,7 +48,7 @@
         android:layout_margin="8sp"
         android:ems="10"
         android:inputType="date"
-        android:text="@string/album_release_date"
+        android:hint="@string/album_release_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/albumCoverField" />
@@ -60,7 +60,7 @@
         android:layout_margin="8sp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/album_genre"
+        android:hint="@string/album_genre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/albumReleaseDateField" />
@@ -72,7 +72,7 @@
         android:layout_margin="8sp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/album_record_label"
+        android:hint="@string/album_record_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/albumGenreField" />
@@ -86,13 +86,13 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:padding="8sp"
-        android:text="@string/album_description"
+        android:hint="@string/album_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/albumRecordLabelField" />
 
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/submitAlbumCreateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create_album"

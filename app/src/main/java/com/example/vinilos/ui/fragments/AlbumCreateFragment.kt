@@ -25,7 +25,7 @@ class AlbumCreateFragment : Fragment() {
 
         _binding = FragmentAlbumCreateBinding.inflate(inflater, container, false)
 
-        val submitButton : Button = binding.submitButton
+        val submitButton : Button = binding.submitAlbumCreateButton
         submitButton.setOnClickListener(View.OnClickListener {
             val params = mutableMapOf<String, String>()
             params["albumName"] = binding.albumNameField.text.toString()
