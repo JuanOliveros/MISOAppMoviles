@@ -9,15 +9,18 @@
         android:id="@+id/createAlbumLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="8sp"
         android:text="@string/create_album"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/albumNameField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="50dp"
+        android:layout_margin="8sp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/album_name"
@@ -28,8 +31,9 @@
 
     <EditText
         android:id="@+id/albumCoverField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="50dp"
+        android:layout_margin="8sp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/album_cover"
@@ -39,8 +43,9 @@
 
     <EditText
         android:id="@+id/albumReleaseDateField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="50dp"
+        android:layout_margin="8sp"
         android:ems="10"
         android:inputType="date"
         android:text="@string/album_release_date"
@@ -50,8 +55,9 @@
 
     <EditText
         android:id="@+id/albumGenreField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="50dp"
+        android:layout_margin="8sp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/album_genre"
@@ -61,8 +67,9 @@
 
     <EditText
         android:id="@+id/albumRecordLabelField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="50dp"
+        android:layout_margin="8sp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/album_record_label"
@@ -72,14 +79,24 @@
 
     <EditText
         android:id="@+id/albumDescriptionField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="106dp"
         android:layout_marginTop="4dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:padding="8sp"
         android:text="@string/album_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/albumRecordLabelField" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_album"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/albumDescriptionField" />
 </androidx.constraintlayout.widget.ConstraintLayout>
