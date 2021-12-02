@@ -1,7 +1,6 @@
 package com.example.vinilos.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinilos.repositories.AlbumCreateRepository
 import kotlinx.coroutines.Dispatchers
@@ -12,15 +11,19 @@ class AlbumCreateViewModel(application: Application) :  AndroidViewModel(applica
 
     private val albumCreateRepository = AlbumCreateRepository(application)
 
+    private val _createResult = MutableLiveData<Int>()
+
+    val createResult: LiveData<Int>
+        get() = _createResult
+
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
     fun saveData(params: MutableMap<String, String>) {
-        Log.i("Viewmodel", params.toString())
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
                     var saveNewAlbum = albumCreateRepository.saveData(params)
-                    Log.i("Http code result", saveNewAlbum.toString())
+                    _createResult.postValue(saveNewAlbum)
                 }
             }
         }
@@ -29,4 +32,13 @@ class AlbumCreateViewModel(application: Application) :  AndroidViewModel(applica
         }
     }
 
+    class Factory(val app: Application) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(AlbumCreateViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return AlbumCreateViewModel(app) as T
+            }
+            throw IllegalArgumentException("Unable to construct viewmodel")
+        }
+    }
 }

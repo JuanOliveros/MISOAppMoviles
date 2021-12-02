@@ -1,15 +1,17 @@
 package com.example.vinilos.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentAlbumCreateBinding
 import com.example.vinilos.viewmodels.AlbumCreateViewModel
@@ -58,8 +60,18 @@ class AlbumCreateFragment : Fragment() {
             params["genre"] = binding.albumGenreField.selectedItem.toString()
             params["recordLabel"] = binding.albumRecordLabelField.selectedItem.toString()
             params["description"] = binding.albumDescriptionField.text.toString()
-            Log.i("fragment", params.toString())
             albumCreateViewModel.saveData(params)
+
+            albumCreateViewModel.createResult.observe(viewLifecycleOwner, Observer<Int> {
+                it.apply {
+                    if (this == 200) {
+                        Toast.makeText(activity, "El álbum fue creado", Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
+                    } else {
+                        Toast.makeText(activity, "¡Hubo un error!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
         })
 
         return binding.root

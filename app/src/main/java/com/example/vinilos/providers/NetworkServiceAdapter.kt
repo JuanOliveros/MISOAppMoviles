@@ -1,7 +1,6 @@
 package com.example.vinilos.providers
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -254,7 +253,6 @@ class NetworkServiceAdapter constructor(context: Context) {
             albumData,
             Response.Listener<JSONObject> { response ->
                 val resp = response
-                Log.i("Response", resp.toString())
                 cont.resume(200)
             },
             Response.ErrorListener {
