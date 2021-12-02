@@ -57,14 +57,15 @@ class AlbumTrackFragment : Fragment() {
             val params = mutableMapOf<String, String>()
             params["name"] = binding.trackNameField.text.toString()
             params["duration"] = binding.trackDurationField.text.toString()
-
+            val view = binding.root
             albumTrackViewModel.saveData(params,args.id)
 
             albumTrackViewModel.createResult.observe(viewLifecycleOwner, Observer<Int> {
                 it.apply {
                     if (this == 200) {
                         Toast.makeText(activity, "La canción fue creada", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
+                        val action = AlbumTrackFragmentDirections.actionAlbumTrackToAlbumDetail(args.id)
+                        view.findNavController().navigate(action)
                     } else {
                         Toast.makeText(activity, "¡Hubo un error!", Toast.LENGTH_SHORT).show()
                     }

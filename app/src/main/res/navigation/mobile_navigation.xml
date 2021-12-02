@@ -95,6 +95,9 @@
         <argument
             android:name="id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_albumTrack_to_albumDetail"
+            app:destination="@id/albumDetail" />
     </fragment>
 
 </navigation>
