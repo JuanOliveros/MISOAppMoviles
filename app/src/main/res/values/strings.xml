@@ -14,4 +14,8 @@
     <string name="release_date">Fecha lanzamiento:</string>
     <string name="tracks">Canciones</string>
     <string name="comments">Comentarios</string>
+    <string name="link_track">Asociar tracks</string>
+    <string name="track_name">Nombre canción</string>
+    <string name="track_duration">Duración</string>
+    <string name="link">Asociar</string>
 </resources>

@@ -4,17 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.databinding.FragmentAlbumBinding
 import com.example.vinilos.models.Album
-import com.example.vinilos.ui.adapters.AlbumDetailAdapter
 import com.example.vinilos.ui.adapters.AlbumCommentAdapter
+import com.example.vinilos.ui.adapters.AlbumDetailAdapter
 import com.example.vinilos.viewmodels.AlbumViewModel
 
 class AlbumFragment : Fragment() {
@@ -67,6 +69,11 @@ class AlbumFragment : Fragment() {
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
+        })
+        val createAlbum: Button = binding.linkTrackButton
+        createAlbum.setOnClickListener(View.OnClickListener {
+            val action = AlbumFragmentDirections.actionAlbumDetailToAlbumTrack(args.id)
+            binding.root.findNavController().navigate(action)
         })
     }
 

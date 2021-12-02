@@ -67,6 +67,9 @@
         <argument
             android:name="id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_albumDetail_to_albumTrack"
+            app:destination="@id/albumTrack" />
     </fragment>
     <fragment
         android:id="@+id/nav_collectors"
@@ -82,6 +85,16 @@
         <argument
             android:name="content"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/albumTrack"
+        android:name="com.example.vinilos.ui.fragments.AlbumTrackFragment"
+        android:label="@string/link_track"
+        tools:layout="@layout/fragment_album_track" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

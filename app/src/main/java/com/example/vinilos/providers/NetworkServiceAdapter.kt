@@ -4,6 +4,7 @@ import android.content.Context
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -16,7 +17,7 @@ import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object {
-        const val BASE_URL = "https://misw4203-api-vinilos-equipo12.herokuapp.com/"
+        const val BASE_URL = "https://back-vinyls-populated.herokuapp.com/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -200,9 +201,26 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
     /* Commented out since we're not using this code right now */
     /* But we'll probably use it in the near future */
-    /*private fun postRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
+    private fun postRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
         return  JsonObjectRequest(Request.Method.POST, BASE_URL+path, body, responseListener, errorListener)
     }
+
+    suspend fun addTrack(body: JSONObject, albumId: Int) = suspendCoroutine<Int>{ cont->
+        requestQueue.add(postRequest("albums/$albumId/tracks",
+            body,
+            Response.Listener<JSONObject> { response ->
+                val track = Track(
+                id = response.getInt("id"),
+                name = response.getString("name"),
+                duration = response.getString("duration")
+                )
+                cont.resume(200)
+            },
+            Response.ErrorListener {
+                cont.resume(400)
+            }))
+    }
+    /*
     private fun putRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
         return JsonObjectRequest(Request.Method.PUT, BASE_URL + path, body, responseListener, errorListener)
     }*/
