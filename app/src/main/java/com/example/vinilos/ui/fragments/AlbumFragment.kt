@@ -17,6 +17,8 @@ import com.example.vinilos.databinding.FragmentAlbumBinding
 import com.example.vinilos.models.Album
 import com.example.vinilos.ui.adapters.AlbumCommentAdapter
 import com.example.vinilos.ui.adapters.AlbumDetailAdapter
+import com.example.vinilos.ui.adapters.AlbumDetailAdapter
+import com.example.vinilos.ui.adapters.AlbumCommentAdapter
 import com.example.vinilos.viewmodels.AlbumViewModel
 
 class AlbumFragment : Fragment() {
