@@ -1,15 +1,19 @@
 package com.example.vinilos.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.vinilos.EntranceActivity
 import com.example.vinilos.databinding.FragmentAlbumsBinding
 import com.example.vinilos.models.Album
 import com.example.vinilos.ui.adapters.AlbumAdapter
@@ -30,6 +34,13 @@ class AlbumsFragment : Fragment() {
         _binding = FragmentAlbumsBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = AlbumAdapter()
+
+        val createAlbum: Button = binding.createAlbumButton
+        createAlbum.setOnClickListener(View.OnClickListener {
+            val action = AlbumsFragmentDirections.actionNavAlbumsToAlbumCreate()
+            view.findNavController().navigate(action)
+        })
+
         return view
     }
 

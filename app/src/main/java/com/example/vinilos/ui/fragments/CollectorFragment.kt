@@ -4,52 +4,48 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vinilos.databinding.FragmentAlbumBinding
-import com.example.vinilos.models.Album
-import com.example.vinilos.ui.adapters.AlbumCommentAdapter
-import com.example.vinilos.ui.adapters.AlbumDetailAdapter
-import com.example.vinilos.ui.adapters.AlbumDetailAdapter
-import com.example.vinilos.ui.adapters.AlbumCommentAdapter
-import com.example.vinilos.viewmodels.AlbumViewModel
+import com.example.vinilos.databinding.FragmentCollectorBinding
+import com.example.vinilos.models.Collector
+import com.example.vinilos.ui.adapters.CollectorPerformerAdapter
+import com.example.vinilos.ui.adapters.CollectorCommentAdapter
+import com.example.vinilos.viewmodels.CollectorViewModel
 
-class AlbumFragment : Fragment() {
+class CollectorFragment : Fragment() {
 
-    private var _binding: FragmentAlbumBinding? = null
+    private var _binding: FragmentCollectorBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: AlbumViewModel
+    private lateinit var viewModel: CollectorViewModel
     private lateinit var recyclerView: RecyclerView
-    private var viewModelAdapter: AlbumDetailAdapter? = null
+    private var viewModelAdapter: CollectorPerformerAdapter? = null
     private lateinit var commentRecyclerView: RecyclerView
-    private var commentViewModelAdapter: AlbumCommentAdapter? = null
+    private var commentViewModelAdapter: CollectorCommentAdapter? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAlbumBinding.inflate(inflater, container, false)
+        _binding = FragmentCollectorBinding.inflate(inflater, container, false)
         _binding!!.lifecycleOwner = this
         val view = binding.root
-        viewModelAdapter = AlbumDetailAdapter()
-        commentViewModelAdapter = AlbumCommentAdapter()
+        viewModelAdapter = CollectorPerformerAdapter()
+        commentViewModelAdapter = CollectorCommentAdapter()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.albumTracksList
+        recyclerView = binding.collectorPerformersList
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
 
-        commentRecyclerView = binding.albumCommentsList
+        commentRecyclerView = binding.collectorCommentsList
         commentRecyclerView.layoutManager = LinearLayoutManager(context)
         commentRecyclerView.adapter = commentViewModelAdapter
     }
@@ -59,23 +55,18 @@ class AlbumFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        val args: AlbumFragmentArgs by navArgs()
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application, args.id)).get(
-            AlbumViewModel::class.java)
-        viewModel.album.observe(viewLifecycleOwner, Observer<Album> {
+        val args: CollectorFragmentArgs by navArgs()
+        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application, args.id)).get(
+            CollectorViewModel::class.java)
+        viewModel.collector.observe(viewLifecycleOwner, Observer<Collector> {
             it.apply {
-                binding.album = this
-                viewModelAdapter!!.tracks = this.tracks!!
+                binding.collector = this
+                viewModelAdapter!!.performers = this.favoritePerformers!!
                 commentViewModelAdapter!!.comments = this.comments!!
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
-        })
-        val createAlbum: Button = binding.linkTrackButton
-        createAlbum.setOnClickListener(View.OnClickListener {
-            val action = AlbumFragmentDirections.actionAlbumDetailToAlbumTrack(args.id)
-            binding.root.findNavController().navigate(action)
         })
     }
 

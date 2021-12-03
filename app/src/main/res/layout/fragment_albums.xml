@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.AlbumsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_album"
+    <data>
+        <variable name="albums" type="com.example.vinilos.models.Album"/>
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/album_item"/>
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.fragments.AlbumsFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/createAlbumButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="247dp"
+                android:layout_height="74dp"
+                android:backgroundTint="#00AEF9"
+                android:elevation="5dp"
+                android:insetLeft="10dp"
+                android:insetRight="10dp"
+                android:padding="10dp"
+                android:text="@string/create_album"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:cornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="79dp"
+                tools:layout_conversion_absoluteWidth="411dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_album"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/createAlbumButton"
+                tools:listitem="@layout/album_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
