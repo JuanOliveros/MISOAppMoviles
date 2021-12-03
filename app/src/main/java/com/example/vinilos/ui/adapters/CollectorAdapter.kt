@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.CollectorItemBinding
 import com.example.vinilos.models.Collector
-import com.example.vinilos.ui.fragments.AlbumsFragmentDirections
 import com.example.vinilos.ui.fragments.CollectorsFragmentDirections
 
 class CollectorAdapter : RecyclerView.Adapter<CollectorAdapter.CollectorViewHolder>(){
