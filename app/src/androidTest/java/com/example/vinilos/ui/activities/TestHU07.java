@@ -34,4 +34,16 @@ public class TestHU07 {
         guestBtn.check(matches(withText("Coleccionista")));
         guestBtn.perform(click());
     }
+
+    @Test
+    public void collectorSeesAlbumsOptionInMenuTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.collector_button));
+        guestBtn.check(matches(withText("Coleccionista")));
+        guestBtn.perform(click());
+
+        onView(withId(R.id.drawer_layout))
+                .perform(DrawerActions.open()); // Open Drawer
+
+        onView(withText("Álbumes")).perform(click());
+    }
 }
