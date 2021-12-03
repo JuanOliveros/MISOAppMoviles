@@ -18,4 +18,13 @@
     <string name="track_name">Nombre canción</string>
     <string name="track_duration">Duración</string>
     <string name="link">Asociar</string>
+    <string name="artists">Artistas favoritos</string>
+
+    <string name="create_album">Crear álbum</string>
+    <string name="album_name">Nombre</string>
+    <string name="album_cover">Cover</string>
+    <string name="album_release_date">Fecha lanzamiento MM-DD-AAAA</string>
+    <string name="album_genre">Género</string>
+    <string name="album_record_label">Casa disquera</string>
+    <string name="album_description">Descripción</string>
 </resources>

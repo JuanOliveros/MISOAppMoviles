@@ -4,7 +4,6 @@ import android.content.Context
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -163,6 +162,59 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
+    suspend fun getCollector(id: Int) = suspendCoroutine<Collector>{ cont->
+        requestQueue.add(getRequest("collectors/$id",
+            Response.Listener<String> { response ->
+                val item = JSONObject(response)
+                val albumsList = mutableListOf<CollectorAlbum>()
+                val performersList = mutableListOf<Performer>()
+                val commentsList = mutableListOf<Comment>()
+                var performer:JSONObject? = null
+                var comment:JSONObject? = null
+
+                val listAlbums = mutableListOf<Album>()
+                val listPrizes = mutableListOf<Prize>()
+                val listMusicians = mutableListOf<String>()
+                val performersArray = JSONArray(item.get("favoritePerformers").toString())
+                val performersArrayLength = performersArray.length()
+                for (i in 0 until performersArrayLength) {
+                    performer = performersArray.getJSONObject(i)
+                    performersList.add(i, Performer(
+                        id = performer.getInt("id"),
+                        name = performer.getString("name"),
+                        image = performer.getString("image"),
+                        description = performer.getString("description"),
+                        birthDate = performer.optString("birthDate"),
+                        creationDate = performer.optString("creationDate"),
+                        albums = listAlbums,
+                        performerPrizes = listPrizes,
+                        musicians = listMusicians
+                    ))
+                }
+
+                val commentsArray = JSONArray(item.get("comments").toString())
+                val commentsArrayLength = commentsArray.length()
+                for (i in 0 until commentsArrayLength) {
+                    comment = commentsArray.getJSONObject(i)
+                    commentsList.add(i, Comment(id = comment.getInt("id"), description = comment.getString("description"), rating = comment.getString("rating")))
+                }
+
+                val collector = Collector(
+                    id = item.getInt("id"),
+                    name = item.getString("name"),
+                    telephone = item.getString("telephone"),
+                    email = item.getString("email"),
+                    collectorAlbums = albumsList,
+                    comments = commentsList,
+                    favoritePerformers = performersList)
+                cont.resume(collector)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            })
+        )
+    }
+
     suspend fun getArtists() = suspendCoroutine<List<Performer>>{ cont->
         requestQueue.add(getRequest("bands",
             Response.Listener<String> { response ->
@@ -196,6 +248,19 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
+    suspend fun createAlbum(albumData: JSONObject) = suspendCoroutine<Int>{ cont ->
+        requestQueue.add(postRequest("albums",
+            albumData,
+            Response.Listener<JSONObject> { response ->
+                val resp = response
+                cont.resume(200)
+            },
+            Response.ErrorListener {
+                cont.resume(400)
+            })
+        )
+    }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
@@ -220,6 +285,9 @@ class NetworkServiceAdapter constructor(context: Context) {
                 cont.resume(400)
             }))
     }
+
+    /* Commented out since we're not using this code right now */
+    /* But we'll probably use it in the near future */
     /*
     private fun putRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
         return JsonObjectRequest(Request.Method.PUT, BASE_URL + path, body, responseListener, errorListener)

@@ -1,53 +1,53 @@
 package com.example.vinilos.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vinilos.EntranceActivity
-import com.example.vinilos.databinding.FragmentAlbumsBinding
-import com.example.vinilos.models.Album
-import com.example.vinilos.ui.adapters.AlbumAdapter
-import com.example.vinilos.viewmodels.AlbumsViewModel
+import com.example.vinilos.databinding.FragmentCollectorBinding
+import com.example.vinilos.models.Collector
+import com.example.vinilos.ui.adapters.CollectorPerformerAdapter
+import com.example.vinilos.ui.adapters.CollectorCommentAdapter
+import com.example.vinilos.viewmodels.CollectorViewModel
 
-class AlbumsFragment : Fragment() {
+class CollectorFragment : Fragment() {
 
-    private var _binding: FragmentAlbumsBinding? = null
+    private var _binding: FragmentCollectorBinding? = null
     private val binding get() = _binding!!
+    private lateinit var viewModel: CollectorViewModel
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: AlbumsViewModel
-    private var viewModelAdapter: AlbumAdapter? = null
+    private var viewModelAdapter: CollectorPerformerAdapter? = null
+    private lateinit var commentRecyclerView: RecyclerView
+    private var commentViewModelAdapter: CollectorCommentAdapter? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAlbumsBinding.inflate(inflater, container, false)
+        _binding = FragmentCollectorBinding.inflate(inflater, container, false)
+        _binding!!.lifecycleOwner = this
         val view = binding.root
-        viewModelAdapter = AlbumAdapter()
-
-        val createAlbum: Button = binding.createAlbumButton
-        createAlbum.setOnClickListener(View.OnClickListener {
-            val action = AlbumsFragmentDirections.actionNavAlbumsToAlbumCreate()
-            view.findNavController().navigate(action)
-        })
-
+        viewModelAdapter = CollectorPerformerAdapter()
+        commentViewModelAdapter = CollectorCommentAdapter()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.fragmentAlbum
+        recyclerView = binding.collectorPerformersList
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        commentRecyclerView = binding.collectorCommentsList
+        commentRecyclerView.layoutManager = LinearLayoutManager(context)
+        commentRecyclerView.adapter = commentViewModelAdapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,17 +55,21 @@ class AlbumsFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        viewModel = ViewModelProvider(this, AlbumsViewModel.Factory(activity.application)).get(
-            AlbumsViewModel::class.java)
-        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
+        val args: CollectorFragmentArgs by navArgs()
+        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application, args.id)).get(
+            CollectorViewModel::class.java)
+        viewModel.collector.observe(viewLifecycleOwner, Observer<Collector> {
             it.apply {
-                viewModelAdapter!!.albums = this
+                binding.collector = this
+                viewModelAdapter!!.performers = this.favoritePerformers!!
+                commentViewModelAdapter!!.comments = this.comments!!
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
