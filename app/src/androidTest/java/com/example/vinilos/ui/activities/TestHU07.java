@@ -62,4 +62,27 @@ public class TestHU07 {
                 .check(matches(withText("Coleccionista")));
 
     }
+
+    @Test
+    public void collectorCanExitFromMenuTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.collector_button));
+        guestBtn.check(matches(withText("Coleccionista")));
+        guestBtn.perform(click());
+
+        Thread.sleep(1000);
+
+        onView(withId(R.id.drawer_layout))
+                .perform(DrawerActions.open()); // Open Drawer
+
+        Thread.sleep(1000);
+
+        onView(anyOf(withId(R.id.logout_button)))
+                .perform(click());
+
+        Thread.sleep(1000);
+
+        onView(withId(R.id.collector_button))
+                .check(matches(withText("Coleccionista")));
+
+    }
 }
