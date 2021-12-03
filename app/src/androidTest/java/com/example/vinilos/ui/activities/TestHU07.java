@@ -46,4 +46,20 @@ public class TestHU07 {
 
         onView(withText("Álbumes")).perform(click());
     }
+
+    @Test
+    public void collectorCanExitFromMainScreenTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.collector_button));
+        guestBtn.check(matches(withText("Coleccionista")));
+        guestBtn.perform(click());
+
+        Thread.sleep(1000);
+
+        onView(anyOf(withId(R.id.exit_collector_button)))
+                .perform(click());
+
+        onView(withId(R.id.collector_button))
+                .check(matches(withText("Coleccionista")));
+
+    }
 }
