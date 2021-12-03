@@ -85,4 +85,27 @@ public class TestHU07 {
                 .check(matches(withText("Coleccionista")));
 
     }
+
+    @Test
+    public void collectorCanAccessAlbumCreationFormTest() throws InterruptedException {
+        ViewInteraction guestBtn = onView(withId(R.id.collector_button));
+        guestBtn.check(matches(withText("Coleccionista")));
+        guestBtn.perform(click());
+
+        onView(withId(R.id.drawer_layout))
+                .perform(DrawerActions.open()); // Open Drawer
+
+        onView(withText("Álbumes")).perform(click());
+
+        Thread.sleep(1000);
+
+        onView(anyOf(withId(R.id.createAlbumButton)))
+                .perform(click());
+
+        Thread.sleep(1000);
+
+        onView(withId(R.id.createAlbumLabel))
+                .check(matches(withText("Crear álbum")));
+
+    }
 }
