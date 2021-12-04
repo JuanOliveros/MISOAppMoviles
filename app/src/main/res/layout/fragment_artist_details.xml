@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="wrap_content"
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.fragments.ArtistDetailsFragment"
@@ -13,9 +13,9 @@
         android:id="@+id/artist_image"
         android:layout_width="420dp"
         android:layout_height="220dp"
+        android:contentDescription="@string/artist_image_a11y"
         android:paddingTop="10dp"
-        tools:ignore="MissingConstraints"
-        android:contentDescription="@string/artist_image_a11y" />
+        tools:ignore="MissingConstraints,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/artist_detail_name"

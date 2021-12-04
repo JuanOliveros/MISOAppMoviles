@@ -31,4 +31,5 @@
     <string name="artist_image_a11y">Imagen del artista</string>
     <string name="guest_welcome_image_a11y">Imagen de bienvenida a invitados</string>
     <string name="collector_welcome_image_a11y">Imagen de bienvenida a coleccionistas</string>
+    <string name="submit_form">Enviar</string>
 </resources>
