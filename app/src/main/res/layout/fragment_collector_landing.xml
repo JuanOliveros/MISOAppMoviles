@@ -31,7 +31,8 @@
             android:layout_height="220dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/img_home_guest"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            android:contentDescription="@string/collector_welcome_image_a11y" />
 
         <TextView
             android:id="@+id/text_content"

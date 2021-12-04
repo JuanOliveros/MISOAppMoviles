@@ -27,4 +27,8 @@
     <string name="album_genre">Género</string>
     <string name="album_record_label">Casa disquera</string>
     <string name="album_description">Descripción</string>
+    <string name="cover_a11y">Imagen del cover</string>
+    <string name="artist_image_a11y">Imagen del artista</string>
+    <string name="guest_welcome_image_a11y">Imagen de bienvenida a invitados</string>
+    <string name="collector_welcome_image_a11y">Imagen de bienvenida a coleccionistas</string>
 </resources>

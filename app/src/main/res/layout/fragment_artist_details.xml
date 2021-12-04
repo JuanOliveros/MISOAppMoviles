@@ -15,8 +15,7 @@
         android:layout_height="220dp"
         android:paddingTop="10dp"
         tools:ignore="MissingConstraints"
-
-        />
+        android:contentDescription="@string/artist_image_a11y" />
 
     <TextView
         android:id="@+id/artist_detail_name"
