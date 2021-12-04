@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             tools:context=".ui.fragments.AlbumsFragment">
 
             <Button
@@ -26,7 +26,7 @@
                 android:insetRight="10dp"
                 android:padding="10dp"
                 android:text="@string/create_album"
-                android:textColor="@color/white"
+                android:textColor="#6D4C41"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:cornerRadius="10dp"
