@@ -19,11 +19,13 @@
                 android:id="@+id/albumDetailCover"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:contentDescription="@string/cover_a11y"
                 android:padding="10dp"
+                app:imageUrl="@{album.cover}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:imageUrl="@{album.cover}" />
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/albumDetailName"
@@ -147,6 +149,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="150dp"
                     android:text="@string/link_track"
+                    android:textColor="#4E342E"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"

@@ -30,7 +30,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAlbumLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/createAlbumLabel"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/albumCoverField"
@@ -42,7 +43,8 @@
             android:hint="@string/album_cover"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/albumNameField" />
+            app:layout_constraintTop_toBottomOf="@+id/albumNameField"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/albumReleaseDateField"
@@ -50,17 +52,20 @@
             android:layout_height="50dp"
             android:layout_margin="8sp"
             android:ems="10"
-            android:inputType="date"
             android:hint="@string/album_release_date"
+            android:textColorHint="#757575"
+            android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/albumCoverField" />
+            app:layout_constraintTop_toBottomOf="@+id/albumCoverField"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/albumGenreLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:labelFor="@+id/albumGenreField"
             android:paddingTop="8sp"
             android:text="@string/album_genre"
             android:textSize="12sp"
@@ -74,17 +79,17 @@
             android:layout_width="366dp"
             android:layout_height="50dp"
             android:layout_margin="8sp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="259dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/albumGenreLabel"/>
+            app:layout_constraintTop_toBottomOf="@+id/albumGenreLabel"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <TextView
             android:id="@+id/albumRecordLabelLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:labelFor="@+id/albumRecordLabelField"
             android:paddingTop="8sp"
             android:text="@string/album_record_label"
             android:textSize="12sp"
@@ -98,11 +103,10 @@
             android:layout_width="366dp"
             android:layout_height="50dp"
             android:layout_margin="8sp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="259dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/albumRecordLabelLabel"/>
+            app:layout_constraintTop_toBottomOf="@+id/albumRecordLabelLabel"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <EditText
             android:id="@+id/albumDescriptionField"
@@ -116,13 +120,15 @@
             android:hint="@string/album_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/albumRecordLabelField" />
+            app:layout_constraintTop_toBottomOf="@+id/albumRecordLabelField"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/submitAlbumCreateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/create_album"
+            android:text="@string/submit_form"
+            android:textColor="#4E342E"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/albumDescriptionField" />
